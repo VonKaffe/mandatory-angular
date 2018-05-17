@@ -1,4 +1,5 @@
-import { Component} from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Task, StatusType } from '../constants';
 
 @Component({
   selector: 'task',
@@ -7,5 +8,6 @@ import { Component} from '@angular/core';
 })
 export class TaskComponent {
 
+  @Input() task: Task;
   constructor() {}
 }
