@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import {TaskService} from "../task.service";
+import { Component, Input } from '@angular/core';
+import { Task, StatusType } from '../constants';
+import { TaskService } from "../task.service";
 
 @Component({
   selector: 'task-list',
@@ -8,12 +9,24 @@ import {TaskService} from "../task.service";
 })
 export class TasklistComponent {
 
+  @Input() statusType: StatusType;
+  tasks: Task[];
+
   constructor(private taskService: TaskService) {}
 
-  ngOnInit(){
-    this.taskService.getTasks(StatusType.NotStarted)
-      .subscribe((list))=> {
-      this.tasklist = list;
-    });
+  checkStatus(task){
+    return this.statusType === task.status
   }
+
+  ngOnInit(){
+    this.taskService.getTasks(this.statusType)
+      .subscribe((list) => {
+        this.tasks = list;
+      })
+  }
+
+  handleStatusChanged(ev){
+
+  }
+
 }

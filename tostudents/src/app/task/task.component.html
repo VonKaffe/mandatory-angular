@@ -1,12 +1,24 @@
 <div class="task">
-  <div class="header">
-      <div>
-        <!-- Render title here... -->
-      </div>
-      <!-- Markup for dropdown menu here... -->
+<div class="header">
+  <div>
+    {{ task.title }}
+    <!-- Render title here... -->
   </div>
-  <hr>
-  <div class="body">
-      <!-- Render description here... -->
-  </div>
+  <!-- Markup for dropdown menu here... -->
+
+  <!--<select name="" id="">
+    <option value="{{ task.status }}">{{ task.status }}</option>
+    <option value="NotStarted">Not Started</option>
+    <option value="InProgress">In Progress</option>
+    <option value="Completed">Completed</option>
+  </select>-->
+  <select (change)="updateTask($event.target.value)">
+    <option [selected]="status === task.status" value="{{ status }}" *ngFor="let status of statusList">{{ status }}</option>
+  </select>
+</div>
+<hr>
+<div class="body">
+  <!-- Render description here... -->
+  {{ task.description }}
+</div>
 </div>

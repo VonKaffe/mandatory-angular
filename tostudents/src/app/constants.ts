@@ -1,12 +1,12 @@
 export enum StatusType {
-    NotStarted = 'Not Started',
-    InProgress = 'In Progress',
-    Completed  = 'Completed'
+  NotStarted = 'Not Started',
+  InProgress = 'In Progress',
+  Completed  = 'Completed'
 };
-  
+
 export interface Task {
-    id: number;
-    status: StatusType;
-    title: string;
-    description?: string;
+  id: number;
+  status: StatusType;
+  title: string;
+  description?: string;
 };

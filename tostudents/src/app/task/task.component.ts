@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Task, StatusType } from '../constants';
-
+import { TaskService } from '../task.service'
 @Component({
   selector: 'task',
   templateUrl: './task.component.html',
@@ -9,5 +9,13 @@ import { Task, StatusType } from '../constants';
 export class TaskComponent {
 
   @Input() task: Task;
-  constructor() {}
+  private statusList = [StatusType.NotStarted, StatusType.InProgress, StatusType.Completed];
+  constructor(private taskService: TaskService) {
+
+  }
+
+  updateTask (newStatus) {
+    this.taskService.updateTask(this.task.id, newStatus);
+  }
+
 }
